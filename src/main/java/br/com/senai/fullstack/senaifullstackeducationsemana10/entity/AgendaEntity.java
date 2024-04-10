@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,13 +16,23 @@ public class AgendaEntity implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @ManyToOne
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "aluno_id", nullable = false)
   private AlunoEntity aluno;
-  @ManyToOne
+
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "tutor_id", nullable = false)
   private TutorEntity tutor;
+
+  @Column(nullable = false)
   private LocalDate data;
+
+  @Column(nullable = false)
   private String status;
+
+  @Column(nullable = false)
   private String tema;
+
   private String descricao;
 
 }

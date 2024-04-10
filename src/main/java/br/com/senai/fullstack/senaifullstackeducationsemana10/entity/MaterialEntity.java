@@ -14,8 +14,13 @@ public class MaterialEntity implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @ManyToOne
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "agenda_id", nullable = false)
   private AgendaEntity agenda;
+
+  @Column(nullable = false)
   private String descricao;
+
+  @Column(nullable = false)
   private String caminhoArquivo;
 }
