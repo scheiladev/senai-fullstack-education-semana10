@@ -1,0 +1,28 @@
+package br.com.senai.fullstack.senaifullstackeducationsemana10.exception;
+
+import br.com.senai.fullstack.senaifullstackeducationsemana10.dto.ErroDto;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class GlobalExceptionAdvice {
+
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<?> handler(Exception e) {
+    ErroDto erro = ErroDto.builder()
+        .codigo("500")
+        .mensagem(e.getMessage())
+        .build();
+    return ResponseEntity.status(500).body(erro);
+  }
+
+  @ExceptionHandler(NotFoundException.class)
+  public ResponseEntity<?> handler(NotFoundException e) {
+    ErroDto erro = ErroDto.builder()
+        .codigo("404")
+        .mensagem(e.getMessage())
+        .build();
+    return ResponseEntity.status(404).body(erro);
+  }
+}

@@ -14,5 +14,6 @@ public class AlunoEntity implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(nullable = false)
   private String nome;
 }
