@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AgendaRepository extends JpaRepository<AgendaEntity, Long> {
 
-  List<AgendaEntity> findByAluno_Id(Long id);
+  List<AgendaEntity> findAgendasByAlunoIdOrderByDataAsc(Long id);
 
-  List<AgendaEntity> findByTutor_Id(Long id);
+  List<AgendaEntity> findAgendasByTutorIdOrderByDataAsc(Long id);
 }

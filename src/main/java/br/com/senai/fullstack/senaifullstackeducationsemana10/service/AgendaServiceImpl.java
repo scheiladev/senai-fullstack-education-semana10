@@ -43,12 +43,12 @@ public class AgendaServiceImpl implements AgendaService {
 
   @Override
   public List<AgendaEntity> buscarAlunoPorId(Long id) {
-    return repository.findByAluno_Id(id);
+    return repository.findAgendasByAlunoIdOrderByDataAsc(id);
   }
 
   @Override
   public List<AgendaEntity> buscarTutorPorId(Long id) {
-    return repository.findByTutor_Id(id);
+    return repository.findAgendasByTutorIdOrderByDataAsc(id);
   }
 
   @Override
