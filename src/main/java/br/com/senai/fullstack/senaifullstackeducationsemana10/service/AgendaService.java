@@ -16,6 +16,10 @@ public interface AgendaService {
 
   List<AgendaEntity> buscarTutorPorId(Long id);
 
+  List<AgendaEntity> buscarAlunoAgendasAbertas(Long id);
+
+  List<AgendaEntity> buscarTutorAgendasAbertas(Long id);
+
   AgendaEntity alterar(Long id, AgendaEntity entity);
 
   void apagar(Long id);

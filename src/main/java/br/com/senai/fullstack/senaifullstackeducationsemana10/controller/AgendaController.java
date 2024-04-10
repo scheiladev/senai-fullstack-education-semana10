@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -34,6 +35,16 @@ public class AgendaController {
   @GetMapping("tutor-id/{id}")
   public ResponseEntity<List<AgendaEntity>> getTutorId(@PathVariable Long id) {
     return ResponseEntity.status(HttpStatus.OK).body(service.buscarTutorPorId(id));
+  }
+
+  @GetMapping("/alunos/{id}/agendas-abertas")
+  public ResponseEntity<List<AgendaEntity>> getAlunoAgendasFuturas(@PathVariable Long id){
+    return ResponseEntity.status(HttpStatus.OK).body(service.buscarAlunoAgendasAbertas(id));
+  }
+
+  @GetMapping("/tutores/{id}/agendas-abertas")
+  public ResponseEntity<List<AgendaEntity>> getTutorAgendasfuturas(@PathVariable Long id){
+    return ResponseEntity.status(HttpStatus.OK).body(service.buscarTutorAgendasAbertas(id));
   }
 
   @PostMapping

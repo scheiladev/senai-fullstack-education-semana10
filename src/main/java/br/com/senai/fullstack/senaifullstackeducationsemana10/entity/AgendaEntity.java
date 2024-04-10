@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @Entity
@@ -26,7 +26,7 @@ public class AgendaEntity implements Serializable {
   private TutorEntity tutor;
 
   @Column(nullable = false)
-  private LocalDate data;
+  private Date data;
 
   @Enumerated(EnumType.ORDINAL)
   private StatusAgendamento status;

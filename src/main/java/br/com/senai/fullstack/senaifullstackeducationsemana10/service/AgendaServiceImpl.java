@@ -8,6 +8,7 @@ import br.com.senai.fullstack.senaifullstackeducationsemana10.repository.AgendaR
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -49,6 +50,16 @@ public class AgendaServiceImpl implements AgendaService {
   @Override
   public List<AgendaEntity> buscarTutorPorId(Long id) {
     return repository.findAgendasByTutorIdOrderByDataAsc(id);
+  }
+
+  @Override
+  public List<AgendaEntity> buscarAlunoAgendasAbertas(Long id) {
+    return repository.findAgendasByAlunoIdAndDataGreaterThanEqualOrderByDataAsc(id, new Date());
+  }
+
+  @Override
+  public List<AgendaEntity> buscarTutorAgendasAbertas(Long id) {
+    return repository.findAgendasByTutorIdAndDataGreaterThanEqualOrderByDataAsc(id, new Date());
   }
 
   @Override
