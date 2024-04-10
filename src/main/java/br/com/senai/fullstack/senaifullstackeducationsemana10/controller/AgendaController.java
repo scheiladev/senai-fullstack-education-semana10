@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("agendas")
+@RequestMapping("agendamentos")
 public class AgendaController {
 
   private final AgendaService service;
@@ -24,6 +24,16 @@ public class AgendaController {
   @GetMapping("{id}")
   public ResponseEntity<AgendaEntity> getId(@PathVariable Long id) {
     return ResponseEntity.status(HttpStatus.OK).body(service.buscarPorId(id));
+  }
+
+  @GetMapping("aluno-id/{id}")
+  public ResponseEntity<List<AgendaEntity>> getAlunoId(@PathVariable Long id) {
+    return ResponseEntity.status(HttpStatus.OK).body(service.buscarAlunoPorId(id));
+  }
+
+  @GetMapping("tutor-id/{id}")
+  public ResponseEntity<List<AgendaEntity>> getTutorId(@PathVariable Long id) {
+    return ResponseEntity.status(HttpStatus.OK).body(service.buscarTutorPorId(id));
   }
 
   @PostMapping

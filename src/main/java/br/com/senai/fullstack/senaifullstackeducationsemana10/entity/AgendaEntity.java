@@ -1,11 +1,13 @@
 package br.com.senai.fullstack.senaifullstackeducationsemana10.entity;
 
+import br.com.senai.fullstack.senaifullstackeducationsemana10.enums.StatusAgendamento;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
+
 
 @Data
 @Entity
@@ -27,8 +29,8 @@ public class AgendaEntity implements Serializable {
   @Column(nullable = false)
   private LocalDate data;
 
-  @Column(nullable = false)
-  private String status;
+  @Enumerated(EnumType.ORDINAL)
+  private StatusAgendamento status;
 
   @Column(nullable = false)
   private String tema;

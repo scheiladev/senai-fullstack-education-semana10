@@ -1,5 +1,6 @@
 package br.com.senai.fullstack.senaifullstackeducationsemana10.service;
 
+import br.com.senai.fullstack.senaifullstackeducationsemana10.entity.AgendaEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana10.entity.MaterialEntity;
 import br.com.senai.fullstack.senaifullstackeducationsemana10.exception.NotFoundException;
 import br.com.senai.fullstack.senaifullstackeducationsemana10.repository.MaterialRepository;
@@ -13,10 +14,15 @@ import java.util.List;
 public class MaterialServiceImpl implements MaterialService {
 
   private final MaterialRepository repository;
+  private final AgendaService agendaService;
 
   @Override
   public MaterialEntity criar(MaterialEntity entity) {
     entity.setId(null);
+
+    AgendaEntity agenda = agendaService.buscarPorId(entity.getAgenda().getId());
+    entity.setAgenda(agenda);
+
     return repository.save(entity);
   }
 
